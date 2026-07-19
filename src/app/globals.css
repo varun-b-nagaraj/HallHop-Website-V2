@@ -82,6 +82,14 @@ button, a { touch-action: manipulation; }
   line-height: 0.94;
 }
 
+.hero-title {
+  font-size: clamp(4rem, min(10.5vw, 14vh), 10.8rem);
+}
+
+.hero-metric {
+  font-size: 1.45rem;
+}
+
 .eyebrow {
   display: flex;
   align-items: center;
@@ -195,6 +203,10 @@ button, a { touch-action: manipulation; }
 
 #errors td {
   overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .hero-metric { font-size: clamp(2.6rem, min(4.4vw, 8vh), 4.8rem); }
 }
 
 @media (min-width: 768px) { .shell { width: min(100% - 64px, 1240px); } }

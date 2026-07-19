@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { CTAButton, Eyebrow, Reveal, Ticker } from "../ui";
 import { IconApi, IconArrow, IconCheck, IconClock, IconCommand, IconPattern, IconRadar, IconSchedule, IconShield } from "../icons";
 import { useHydratedReducedMotion } from "../useHydratedReducedMotion";
@@ -16,36 +16,33 @@ const heroStats = [
 ];
 
 function Hero() {
-  const ref = useRef<HTMLElement>(null);
   const reduce = useHydratedReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 70]);
   return (
-    <section ref={ref} className="relative min-h-dvh overflow-hidden border-b border-ink pt-32 sm:pt-40">
+    <section className="relative min-h-svh overflow-hidden border-b border-ink pt-24 sm:pt-28">
       <div className="rule-grid absolute inset-0 opacity-60" aria-hidden="true" />
-      <motion.div style={reduce ? undefined : { y }} className="shell relative">
-        <div className="grid gap-10 lg:grid-cols-[1.45fr_0.55fr] lg:items-end">
+      <div className="shell relative flex min-h-[calc(100svh-6rem)] flex-col justify-between gap-8 pb-6 sm:min-h-[calc(100svh-7rem)] sm:pb-8">
+        <div className="grid gap-8 pt-[clamp(1.5rem,4vh,4rem)] lg:grid-cols-[1.45fr_0.55fr] lg:items-end">
           <div>
             <motion.div initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: EASE }}><Eyebrow>School movement, made clear</Eyebrow></motion.div>
-            <motion.h1 initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.4, ease: EASE }} className="display mt-7 max-w-[11ch] text-[clamp(4.3rem,11vw,10.8rem)]">The hallway,<br /><span className="text-accent">understood.</span></motion.h1>
+            <motion.h1 initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.4, ease: EASE }} className="hero-title display mt-5 max-w-[11ch]">The hallway,<br /><span className="text-accent">understood.</span></motion.h1>
           </div>
           <motion.div initial={reduce ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.38, ease: EASE }} className="pb-2">
             <p className="max-w-md text-lg leading-relaxed text-ink-2">HallHop turns every pass into useful context—so students move with clarity, teachers keep teaching, and school leaders can see the day as it happens.</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row"><CTAButton href="/contact">Contact sales</CTAButton><CTAButton href="/how-it-works" secondary>See the flow</CTAButton></div>
           </motion.div>
         </div>
-        <div className="mt-[clamp(3.5rem,7vw,7rem)] border-y border-ink" aria-label="HallHop at a glance">
+        <div className="border-y border-ink" aria-label="HallHop at a glance">
           <p className="border-b border-ink py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-faint">Current scale</p>
           <div className="grid grid-cols-3">
             {heroStats.map((stat, index) => (
               <div key={stat.label} className={`min-w-0 py-5 pr-2 sm:px-6 sm:py-8 lg:px-8 ${index ? "border-l border-ink" : ""}`}>
-                <p className="display whitespace-nowrap text-[1.45rem] leading-none sm:text-[clamp(2.6rem,5vw,5.5rem)]"><span className="sm:hidden">{stat.compactValue}</span><span className="hidden sm:inline">{stat.value}</span></p>
+                <p className="hero-metric display whitespace-nowrap leading-none"><span className="sm:hidden">{stat.compactValue}</span><span className="hidden sm:inline">{stat.value}</span></p>
                 <p className="mt-2 max-w-xs text-[10px] leading-snug text-ink-2 sm:mt-3 sm:text-sm sm:leading-relaxed">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
