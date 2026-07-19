@@ -65,7 +65,7 @@ function DayInMotion() {
           <Reveal><Eyebrow className="text-chalk">One ordinary moment</Eyebrow><h2 className="display mt-8 max-w-[8ch] text-[clamp(3.8rem,7vw,7rem)]">A school day in motion.</h2><p className="mt-7 max-w-md text-lg leading-relaxed text-paper/65">HallHop stays out of the way until context is useful. Then it is exactly where staff need it.</p></Reveal>
         </div>
         <div>
-          {moments.map((moment, i) => { const Icon = moment.icon; return <Reveal key={moment.n} className={`grid min-h-[290px] gap-8 border-t border-paper/25 py-10 sm:grid-cols-[84px_1fr] ${i === moments.length - 1 ? "border-b" : ""}`}><div><span className="font-mono text-xs text-chalk">{moment.n}</span><p className="mt-2 font-mono text-xs text-paper/45">{moment.time}</p></div><div><Icon className="h-9 w-9 text-chalk" /><h3 className="display mt-8 text-4xl sm:text-5xl">{moment.title}</h3><p className="mt-5 max-w-xl text-lg leading-relaxed text-paper/65">{moment.body}</p></div></Reveal>; })}
+          {moments.map((moment, i) => { const Icon = moment.icon; return <Reveal key={moment.n} className={`grid min-h-[290px] gap-8 border-t border-paper/25 py-10 sm:grid-cols-[84px_1fr] ${i === moments.length - 1 ? "border-b" : ""}`}><div><span className="font-mono text-xs text-chalk">{moment.n}</span><p className="mt-2 font-mono text-xs text-paper/70">{moment.time}</p></div><div><Icon className="h-9 w-9 text-chalk" /><h3 className="display mt-8 text-4xl sm:text-5xl">{moment.title}</h3><p className="mt-5 max-w-xl text-lg leading-relaxed text-paper/70">{moment.body}</p></div></Reveal>; })}
         </div>
       </div>
     </section>
