@@ -199,7 +199,7 @@ function CopyButton({ value, label = "Copy" }: { value: string; label?: string }
 }
 
 function CodeBlock({ code, label }: { code: string; label: string }) {
-  return <div className="overflow-hidden border border-paper/25 bg-black/25"><div className="flex items-center justify-between border-b border-paper/20 px-4 py-2"><span className="font-mono text-[10px] uppercase tracking-wider text-paper/45">{label}</span><CopyButton value={code} label="Copy code" /></div><pre className="overflow-x-auto p-5 font-mono text-[12px] leading-6 text-paper/75"><code>{code}</code></pre></div>;
+  return <div className="overflow-hidden border border-ink bg-ink text-paper"><div className="flex items-center justify-between border-b border-paper/25 px-4 py-2"><span className="font-mono text-[10px] uppercase tracking-wider text-paper/65">{label}</span><CopyButton value={code} label="Copy code" /></div><pre className="overflow-x-auto p-5 font-mono text-[12px] leading-6 text-paper"><code>{code}</code></pre></div>;
 }
 
 function FieldTable({ fields }: { fields: Field[] }) {
