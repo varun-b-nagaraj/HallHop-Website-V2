@@ -75,11 +75,11 @@ function Principles() {
 }
 
 function ApiSpotlight() {
-  return <section className="chalk-section border-y border-ink"><div className="shell grid gap-12 py-[clamp(4rem,8vw,7rem)] lg:grid-cols-[1fr_1fr] lg:items-end"><Reveal><IconApi className="h-11 w-11" /><Eyebrow className="mt-8">Also from HallHop</Eyebrow><h2 className="display mt-7 text-[clamp(3.4rem,7vw,6.8rem)]">The HAC API.</h2></Reveal><Reveal delay={0.05}><p className="max-w-xl text-xl leading-relaxed">A separate service that turns Home Access Center data into useful building blocks for school tools. It currently handles about 15,000 reads each month and supports a live use case at Round Rock High School.</p><Link href="/api" className="link-arrow mt-7">Explore the API <IconArrow className="h-5 w-5" /></Link></Reveal></div></section>;
+  return <section className="chalk-section border-y border-ink"><div className="shell grid gap-12 py-[clamp(4rem,8vw,7rem)] lg:grid-cols-[1fr_1fr] lg:items-end"><Reveal><IconApi className="h-11 w-11" /><Eyebrow className="mt-8">Also from HallHop</Eyebrow><h2 className="display mt-7 text-[clamp(3.4rem,7vw,6.8rem)]">The HAC API.</h2></Reveal><Reveal delay={0.05}><p className="max-w-xl text-xl leading-relaxed">A separate service that turns Home Access Center data into useful building blocks for school tools. It currently handles about 15,000 reads each month and supports a live use case at Round Rock High School.</p><Link href="/api" prefetch={false} className="link-arrow mt-7">Explore the API <IconArrow className="h-5 w-5" /></Link></Reveal></div></section>;
 }
 
 function FinalCta() {
-  return <section className="hallway-lines signal-section relative overflow-hidden"><div className="shell relative py-[clamp(6rem,11vw,11rem)]"><Reveal><p className="display max-w-[11ch] text-[clamp(4rem,10vw,10rem)]">Your hallway already tells a story.</p><p className="mt-8 max-w-xl text-xl leading-relaxed">HallHop helps your school read it—clearly, responsibly, and in time to act.</p><div className="mt-9"><Link href="/contact" className="btn btn-dark">Contact sales <IconArrow className="h-5 w-5" /></Link></div></Reveal></div></section>;
+  return <section className="hallway-lines signal-section relative overflow-hidden"><div className="shell relative py-[clamp(6rem,11vw,11rem)]"><Reveal><p className="display max-w-[11ch] text-[clamp(4rem,10vw,10rem)]">Your hallway already tells a story.</p><p className="mt-8 max-w-xl text-xl leading-relaxed">HallHop helps your school read it—clearly, responsibly, and in time to act.</p><div className="mt-9"><Link href="/contact" prefetch={false} className="btn btn-dark">Contact sales <IconArrow className="h-5 w-5" /></Link></div></Reveal></div></section>;
 }
 
 export function HomePage() {

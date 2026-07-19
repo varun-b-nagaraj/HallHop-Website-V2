@@ -17,7 +17,7 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 
 export function CTAButton({ href, children, secondary = false, light = false }: { href: string; children: ReactNode; secondary?: boolean; light?: boolean }) {
   const kind = light ? "btn-light" : secondary ? "btn-ghost" : "btn-primary";
-  return <Link href={href} className={`btn ${kind}`}>{children}<IconArrow className="h-5 w-5" /></Link>;
+  return <Link href={href} prefetch={false} className={`btn ${kind}`}>{children}<IconArrow className="h-5 w-5" /></Link>;
 }
 
 export function PageHeader({ eyebrow, title, accent, children }: { eyebrow: string; title: string; accent?: string; children?: ReactNode }) {
