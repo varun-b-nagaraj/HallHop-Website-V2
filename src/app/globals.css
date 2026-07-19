@@ -83,7 +83,7 @@ button, a { touch-action: manipulation; }
 }
 
 .hero-title {
-  font-size: clamp(4rem, min(10.5vw, 14vh), 10.8rem);
+  font-size: clamp(4.3rem, min(11vw, 17svh), 10.8rem);
 }
 
 .hero-metric {
@@ -209,7 +209,26 @@ button, a { touch-action: manipulation; }
   .hero-metric { font-size: clamp(2.6rem, min(4.4vw, 8vh), 4.8rem); }
 }
 
-@media (min-width: 768px) { .shell { width: min(100% - 64px, 1240px); } }
+@media (min-width: 768px) {
+  .shell { width: min(100% - 64px, 1240px); }
+  .hero-shell { width: min(100% - 64px, 1480px); }
+}
+
+@media (min-width: 640px) and (max-height: 520px) and (orientation: landscape) {
+  .hero-section { padding-top: 5rem; }
+  .hero-shell { padding-bottom: 0.5rem; }
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    align-items: end;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+  .hero-title {
+    margin-top: 0.5rem;
+    font-size: clamp(3.5rem, min(9vw, 19svh), 5.25rem);
+  }
+  .hero-metric { font-size: 2rem; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
