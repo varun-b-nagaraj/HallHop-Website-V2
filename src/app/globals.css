@@ -160,7 +160,15 @@ button, a { touch-action: manipulation; }
 .hallway-lines::before { transform: rotate(62deg); }
 .hallway-lines::after { transform: rotate(-62deg); }
 
-.marquee-track { transform: translateX(-1rem); }
+@keyframes hallhop-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: hallhop-marquee 28s linear infinite;
+  will-change: transform;
+}
 
 .live-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--chalk); box-shadow: 0 0 0 4px rgba(217, 243, 106, 0.18); }
 
@@ -193,6 +201,10 @@ button, a { touch-action: manipulation; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .marquee-track {
+    animation: none;
+    transform: translateX(-1rem);
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
