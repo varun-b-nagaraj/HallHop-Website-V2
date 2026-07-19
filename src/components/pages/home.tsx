@@ -3,30 +3,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { CTAButton, Counter, Eyebrow, Reveal, Ticker } from "../ui";
+import { CTAButton, Eyebrow, Reveal, Ticker } from "../ui";
 import { IconApi, IconArrow, IconCheck, IconClock, IconCommand, IconPattern, IconRadar, IconSchedule, IconShield } from "../icons";
 import { useHydratedReducedMotion } from "../useHydratedReducedMotion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-function HallwayScene() {
-  const reduce = useHydratedReducedMotion();
-  return (
-    <div className="hallway-lines relative h-[280px] border-x border-t border-ink bg-panel sm:h-[360px]" aria-label="Abstract school hallway with live pass activity">
-      <div className="absolute inset-x-0 bottom-0 h-[38%] border-t border-ink bg-bg-2" />
-      {["204", "206", "208", "210"].map((room, i) => (
-        <motion.div key={room} initial={reduce ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 + i * 0.06, duration: 0.38, ease: EASE }} className="absolute bottom-[38%] h-[46%] w-[15%] border border-b-0 border-ink bg-bg" style={{ left: `${6 + i * 26}%` }}>
-          <span className="absolute left-2 top-2 font-mono text-[10px]">RM {room}</span>
-          <span className="absolute right-2 top-1/2 h-1.5 w-1.5 rounded-full bg-ink" />
-        </motion.div>
-      ))}
-      <motion.div initial={reduce ? false : { x: "-20%", opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.55, duration: 0.4, ease: EASE }} className="absolute bottom-6 left-[11%] flex items-center gap-3 border border-ink bg-ink px-3 py-2 text-paper sm:left-[31%]">
-        <span className="live-dot" /><span className="font-mono text-[10px] uppercase tracking-wider">Pass active · Library · 02:14</span>
-      </motion.div>
-      <div className="absolute right-4 top-4 border border-ink bg-chalk px-3 py-2 font-mono text-[10px] uppercase tracking-wider">Tuesday · B day</div>
-    </div>
-  );
-}
+const heroStats = [
+  { value: "4,000+", compactValue: "4K+", label: "users across the HallHop ecosystem" },
+  { value: "15,000/mo", compactValue: "15K/mo", label: "reads served by the separate HAC API" },
+  { value: "1 view", compactValue: "1 view", label: "for active movement across a campus" },
+];
 
 function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -37,7 +24,7 @@ function Hero() {
     <section ref={ref} className="relative min-h-dvh overflow-hidden border-b border-ink pt-32 sm:pt-40">
       <div className="rule-grid absolute inset-0 opacity-60" aria-hidden="true" />
       <motion.div style={reduce ? undefined : { y }} className="shell relative">
-        <div className="grid gap-10 pb-12 lg:grid-cols-[1.45fr_0.55fr] lg:items-end">
+        <div className="grid gap-10 lg:grid-cols-[1.45fr_0.55fr] lg:items-end">
           <div>
             <motion.div initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: EASE }}><Eyebrow>School movement, made clear</Eyebrow></motion.div>
             <motion.h1 initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.4, ease: EASE }} className="display mt-7 max-w-[11ch] text-[clamp(4.3rem,11vw,10.8rem)]">The hallway,<br /><span className="text-accent">understood.</span></motion.h1>
@@ -47,20 +34,20 @@ function Hero() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row"><CTAButton href="/contact">Contact sales</CTAButton><CTAButton href="/how-it-works" secondary>See the flow</CTAButton></div>
           </motion.div>
         </div>
-        <HallwayScene />
+        <div className="mt-[clamp(3.5rem,7vw,7rem)] border-y border-ink" aria-label="HallHop at a glance">
+          <p className="border-b border-ink py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-faint">Current scale</p>
+          <div className="grid grid-cols-3">
+            {heroStats.map((stat, index) => (
+              <div key={stat.label} className={`min-w-0 py-5 pr-2 sm:px-6 sm:py-8 lg:px-8 ${index ? "border-l border-ink" : ""}`}>
+                <p className="display whitespace-nowrap text-[1.45rem] leading-none sm:text-[clamp(2.6rem,5vw,5.5rem)]"><span className="sm:hidden">{stat.compactValue}</span><span className="hidden sm:inline">{stat.value}</span></p>
+                <p className="mt-2 max-w-xs text-[10px] leading-snug text-ink-2 sm:mt-3 sm:text-sm sm:leading-relaxed">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </motion.div>
     </section>
   );
-}
-
-const stats = [
-  { value: 4000, suffix: "+", label: "users across the HallHop ecosystem" },
-  { value: 15000, suffix: "/mo", label: "reads served by the separate HAC API" },
-  { value: 1, suffix: " view", label: "for active movement across a campus" },
-];
-
-function Proof() {
-  return <section className="fresh-section border-b border-ink"><div className="shell grid lg:grid-cols-3">{stats.map((s, i) => <Reveal key={s.label} className={`py-10 lg:px-8 ${i > 0 ? "border-t border-ink lg:border-l lg:border-t-0" : ""}`}><p className="display text-5xl sm:text-6xl"><Counter to={s.value} suffix={s.suffix} /></p><p className="mt-3 max-w-xs text-sm text-ink-2">{s.label}</p></Reveal>)}</div></section>;
 }
 
 const moments = [
@@ -117,5 +104,5 @@ function FinalCta() {
 }
 
 export function HomePage() {
-  return <main id="main"><Hero /><Proof /><Ticker items={["Digital passes", "Live movement", "Schedule context", "Role-aware views", "Pattern review", "Student transparency"]} /><DayInMotion /><Audience /><Principles /><ApiSpotlight /><FinalCta /></main>;
+  return <main id="main"><Hero /><Ticker items={["Digital passes", "Live movement", "Schedule context", "Role-aware views", "Pattern review", "Student transparency"]} /><DayInMotion /><Audience /><Principles /><ApiSpotlight /><FinalCta /></main>;
 }
