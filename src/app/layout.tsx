@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Calistoga, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
@@ -24,6 +24,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  applicationName: "HallHop",
   title: {
     default: "HallHop — The hallway, understood",
     template: "%s — HallHop",
@@ -31,12 +32,34 @@ export const metadata: Metadata = {
   description:
     "HallHop gives schools a clearer, faster way to manage student movement — from digital passes to live hallway context and useful patterns.",
   metadataBase: new URL("https://hallhop.com"),
+  alternates: { canonical: "/" },
+  category: "education",
+  creator: "HallHop",
+  publisher: "HallHop",
+  formatDetection: {
+    address: false,
+    email: false,
+    telephone: false,
+  },
   openGraph: {
     title: "HallHop — The hallway, understood",
     description:
       "Digital passes, live context, and useful patterns for the school day already in motion.",
     type: "website",
+    siteName: "HallHop",
+    url: "/",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "HallHop — The hallway, understood",
+    description:
+      "Digital passes, live context, and useful patterns for the school day already in motion.",
+  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#f3efe6",
 };
 
 export default function RootLayout({
