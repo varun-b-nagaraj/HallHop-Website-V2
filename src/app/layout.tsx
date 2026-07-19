@@ -1,14 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Calistoga, Inter } from "next/font/google";
+import { Calistoga } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const calistoga = Calistoga({
   variable: "--font-calistoga",
@@ -65,7 +59,7 @@ export default function RootLayout({
           attributes (e.g. cz-shortcut-listen) before React hydrates */}
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${calistoga.variable} antialiased`}
+        className={`${calistoga.variable} antialiased`}
       >
         <a
           href="#main"
