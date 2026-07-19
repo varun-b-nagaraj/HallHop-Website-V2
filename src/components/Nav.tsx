@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { IconClose, IconMenu, LogoMark } from "./icons";
 
 const links = [
@@ -17,7 +17,6 @@ export function Nav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let frame = 0;
@@ -25,24 +24,19 @@ export function Nav() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         setScrolled(window.scrollY > 8);
-        const distance = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = distance > 0 ? window.scrollY / distance : 0;
-        if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`;
       });
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
     };
   }, []);
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${scrolled || open ? "border-line bg-panel" : "border-transparent bg-transparent"}`}>
-      <div ref={progressRef} className="absolute inset-x-0 bottom-[-1px] h-[3px] origin-left scale-x-0 bg-accent" aria-hidden="true" />
+      <div className="scroll-progress absolute inset-x-0 bottom-[-1px] h-[3px] origin-left scale-x-0 bg-accent" aria-hidden="true" />
       <nav className="shell flex h-20 items-center justify-between" aria-label="Primary navigation">
         <Link href="/" className="flex min-h-12 items-center gap-3" aria-label="HallHop home">
           <LogoMark className="h-9 w-9 text-ink" />
