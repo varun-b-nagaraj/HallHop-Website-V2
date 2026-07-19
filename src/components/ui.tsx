@@ -1,9 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { IconArrow } from "./icons";
+import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -12,7 +13,7 @@ export function Shell({ children, className = "", id }: { children: ReactNode; c
 }
 
 export function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  const reduce = useReducedMotion();
+  const reduce = useHydratedReducedMotion();
   return (
     <motion.div
       className={className}
@@ -53,7 +54,7 @@ export function PageHeader({ eyebrow, title, accent, children }: { eyebrow: stri
 }
 
 export function Counter({ to, suffix = "", prefix = "" }: { to: number; suffix?: string; prefix?: string }) {
-  const reduce = useReducedMotion();
+  const reduce = useHydratedReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const [value, setValue] = useState(0);
@@ -80,7 +81,7 @@ export function Counter({ to, suffix = "", prefix = "" }: { to: number; suffix?:
 
 export function Accordion({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState(0);
-  const reduce = useReducedMotion();
+  const reduce = useHydratedReducedMotion();
   return (
     <div className="border-t border-ink">
       {items.map((item, index) => {

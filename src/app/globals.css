@@ -178,6 +178,17 @@ button, a { touch-action: manipulation; }
 .form-control:focus { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink); }
 .form-control[aria-invalid="true"] { border-color: var(--danger); box-shadow: 0 0 0 1px var(--danger); }
 
+#errors {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  contain: inline-size;
+}
+
+#errors td {
+  overflow-wrap: anywhere;
+}
+
 @media (min-width: 768px) { .shell { width: min(100% - 64px, 1240px); } }
 
 @media (prefers-reduced-motion: reduce) {

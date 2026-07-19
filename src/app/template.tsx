@@ -1,10 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useHydratedReducedMotion } from "@/components/useHydratedReducedMotion";
 
 /** Route transition — every page enters with a soft rise. */
 export default function Template({ children }: { children: React.ReactNode }) {
-  const reduce = useReducedMotion();
+  const reduce = useHydratedReducedMotion();
   return (
     <motion.div
       initial={reduce ? false : { opacity: 0, y: 10 }}

@@ -1,15 +1,16 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { CTAButton, Counter, Eyebrow, Reveal, Ticker } from "../ui";
 import { IconApi, IconArrow, IconCheck, IconClock, IconCommand, IconPattern, IconRadar, IconSchedule, IconShield } from "../icons";
+import { useHydratedReducedMotion } from "../useHydratedReducedMotion";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 function HallwayScene() {
-  const reduce = useReducedMotion();
+  const reduce = useHydratedReducedMotion();
   return (
     <div className="hallway-lines relative h-[280px] border-x border-t border-ink bg-panel sm:h-[360px]" aria-label="Abstract school hallway with live pass activity">
       <div className="absolute inset-x-0 bottom-0 h-[38%] border-t border-ink bg-bg-2" />
@@ -29,7 +30,7 @@ function HallwayScene() {
 
 function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
+  const reduce = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 70]);
   return (
