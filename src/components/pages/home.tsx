@@ -1,13 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 import { CTAButton, Eyebrow, Reveal, Ticker } from "../ui";
-import { IconApi, IconArrow, IconCheck, IconClock, IconCommand, IconPattern, IconRadar, IconSchedule, IconShield } from "../icons";
-import { useHydratedReducedMotion } from "../useHydratedReducedMotion";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
+import { IconApi, IconArrow, IconClock, IconCommand, IconPattern, IconRadar, IconSchedule, IconShield } from "../icons";
+import { AudienceTabs } from "../AudienceTabs";
 
 const heroStats = [
   { value: "4,000+", compactValue: "4K+", label: "users across the HallHop ecosystem" },
@@ -16,20 +10,19 @@ const heroStats = [
 ];
 
 function Hero() {
-  const reduce = useHydratedReducedMotion();
   return (
     <section className="hero-section relative overflow-hidden border-b border-ink pt-24 sm:pt-28">
       <div className="rule-grid absolute inset-0 opacity-60" aria-hidden="true" />
       <div className="hero-shell shell relative pb-6 sm:pb-8">
         <div className="hero-layout grid gap-8 pt-[clamp(1.5rem,4vh,4rem)] lg:grid-cols-[1.45fr_0.55fr] lg:items-end">
           <div>
-            <motion.div initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: EASE }}><Eyebrow>School movement, made clear</Eyebrow></motion.div>
-            <motion.h1 initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08, duration: 0.4, ease: EASE }} className="hero-title display mt-5"><span className="block lg:whitespace-nowrap">The hallway,</span><span className="block text-accent">understood.</span></motion.h1>
+            <Eyebrow>School movement, made clear</Eyebrow>
+            <h1 className="hero-title display mt-5"><span className="block lg:whitespace-nowrap">The hallway,</span><span className="block text-accent">understood.</span></h1>
           </div>
-          <motion.div initial={reduce ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.38, ease: EASE }} className="pb-2">
+          <div className="pb-2">
             <p className="max-w-md text-lg leading-relaxed text-ink-2">HallHop turns every pass into useful context—so students move with clarity, teachers keep teaching, and school leaders can see the day as it happens.</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row"><CTAButton href="/contact">Contact sales</CTAButton><CTAButton href="/how-it-works" secondary>See the flow</CTAButton></div>
-          </motion.div>
+          </div>
         </div>
         <div className="mt-[clamp(3rem,6vw,6rem)] border-y border-ink" aria-label="HallHop at a glance">
           <div className="grid grid-cols-3">
@@ -68,18 +61,8 @@ function DayInMotion() {
   );
 }
 
-const audiences = [
-  { key: "teachers", label: "Teachers", title: "Keep the lesson moving.", body: "Issue, approve, recall, and close passes from a deliberately quiet command center.", items: ["Current-class context", "Fast approval workflow", "Visible active timers"] },
-  { key: "leaders", label: "School leaders", title: "See the building as one system.", body: "A live operating picture replaces scattered pass slips, hallway calls, and incomplete memory.", items: ["Building-wide active view", "Searchable history", "Human-reviewed patterns"] },
-  { key: "students", label: "Students", title: "Know where you stand.", body: "Clear status and history make expectations visible instead of surprising students after the fact.", items: ["Current pass status", "Personal history", "Transparent limits"] },
-];
-
 function Audience() {
-  const [active, setActive] = useState(0);
-  const item = audiences[active];
-  return (
-    <section className="signal-section border-y border-ink"><div className="shell py-[clamp(5rem,9vw,9rem)]"><Reveal><Eyebrow>Designed around people</Eyebrow><div className="mt-10 grid gap-12 lg:grid-cols-[0.72fr_1.28fr]"><div role="tablist" aria-label="HallHop audiences" className="border-t border-ink">{audiences.map((a, i) => <button key={a.key} role="tab" aria-selected={i === active} onClick={() => setActive(i)} className={`flex min-h-16 w-full cursor-pointer items-center justify-between border-b border-ink px-1 text-left text-lg font-semibold transition-colors ${i === active ? "bg-ink px-4 text-paper" : "hover:px-4"}`}><span>{a.label}</span><span className="font-mono text-xs">0{i + 1}</span></button>)}</div><motion.div key={item.key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28, ease: EASE }} role="tabpanel"><h2 className="display max-w-[10ch] text-[clamp(3.8rem,7vw,7rem)]">{item.title}</h2><p className="mt-7 max-w-xl text-lg leading-relaxed">{item.body}</p><ul className="mt-8 grid gap-3 sm:grid-cols-3">{item.items.map((point) => <li key={point} className="border border-ink bg-paper p-4 text-sm font-semibold"><IconCheck className="mb-6 h-5 w-5" />{point}</li>)}</ul></motion.div></div></Reveal></div></section>
-  );
+  return <section className="signal-section border-y border-ink"><div className="shell py-[clamp(5rem,9vw,9rem)]"><Reveal><Eyebrow>Designed around people</Eyebrow><AudienceTabs /></Reveal></div></section>;
 }
 
 function Principles() {

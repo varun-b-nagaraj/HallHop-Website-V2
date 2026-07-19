@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Calistoga, Inter, JetBrains_Mono } from "next/font/google";
+import { Calistoga, Inter } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -14,12 +14,6 @@ const calistoga = Calistoga({
   variable: "--font-calistoga",
   subsets: ["latin"],
   weight: "400",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -71,7 +65,7 @@ export default function RootLayout({
           attributes (e.g. cz-shortcut-listen) before React hydrates */}
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${calistoga.variable} ${jetbrains.variable} antialiased`}
+        className={`${inter.variable} ${calistoga.variable} antialiased`}
       >
         <a
           href="#main"
