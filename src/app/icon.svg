@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="12" fill="#F3EFE6"/>
-  <path d="M8 7h19v50H8zM37 7h19v50H37zM22 27h20v11H22z" fill="#171713"/>
-  <path d="M42 16h14v32H42z" fill="#F3EFE6"/>
-  <path d="m44 16 12-5v37l-12-6z" fill="#F05A3C"/>
-  <circle cx="47.5" cy="30" r="1.5" fill="#171713"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="HallHop">
+  <rect width="64" height="64" rx="13" fill="#F05A3C"/>
+  <path d="M10 8h16v19h12V8h16v48H38V38H26v18H10z" fill="#171713"/>
+  <path d="M43 18h11v30H43z" fill="#F05A3C"/>
+  <path d="m44.5 18 9.5-4v34l-9.5-5.5z" fill="#F3EFE6"/>
+  <circle cx="47.5" cy="31" r="1.5" fill="#171713"/>
 </svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">HallHop — The hallway, understood</title>
+  <desc id="desc">HallHop brand card with a bold doorway mark and school movement message.</desc>
+  <defs>
+    <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M52 0H0v52" fill="none" stroke="#D6D0C4" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#F3EFE6"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity=".72"/>
+  <rect width="1200" height="14" fill="#F05A3C"/>
+
+  <g transform="translate(474 50)">
+    <rect width="46" height="46" rx="9" fill="#F05A3C"/>
+    <path d="M7 6h12v14h9V6h12v35H28V28h-9v13H7z" fill="#171713"/>
+    <path d="M32 13h8v22h-8z" fill="#F05A3C"/>
+    <path d="m33 13 7-3v25l-7-4z" fill="#F3EFE6"/>
+    <circle cx="35.2" cy="22.5" r="1" fill="#171713"/>
+    <text x="64" y="35" fill="#171713" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="-1">HallHop</text>
+  </g>
+
+  <g transform="translate(0 166)" text-anchor="middle">
+    <text x="600" y="88" fill="#171713" font-family="Calistoga, Georgia, serif" font-size="102" font-weight="700" letter-spacing="-4">The hallway,</text>
+    <text x="600" y="188" fill="#F05A3C" font-family="Calistoga, Georgia, serif" font-size="102" font-weight="700" letter-spacing="-4">understood.</text>
+    <text x="600" y="250" fill="#5E5B53" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="0">Clear movement. Shared context. Better school days.</text>
+  </g>
+
+  <path d="M0 478 222 430M1200 478 978 430" fill="none" stroke="#171713" stroke-width="2" opacity=".24"/>
+  <path d="M0 526 280 454M1200 526 920 454" fill="none" stroke="#171713" stroke-width="2" opacity=".16"/>
+
+  <rect y="558" width="1200" height="72" fill="#D9F36A"/>
+  <g fill="#171713" font-family="Courier New, monospace" font-size="17" font-weight="700" letter-spacing="2">
+    <text x="194" y="602">DIGITAL PASSES</text>
+    <rect x="411" y="589" width="10" height="10" fill="#F05A3C"/>
+    <text x="459" y="602">LIVE CONTEXT</text>
+    <rect x="649" y="589" width="10" height="10" fill="#F05A3C"/>
+    <text x="707" y="602">USEFUL PATTERNS</text>
+  </g>
+</svg>
