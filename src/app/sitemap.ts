@@ -8,6 +8,7 @@ const routes = [
   "/api",
   "/resources",
   "/about",
+  "/team",
   "/contact",
 ];
 
